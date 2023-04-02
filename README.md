@@ -1,1 +1,4 @@
-# db2_lab1_zlotenko
+Instruction:
+
+docker compose build
+docker compose up -d
