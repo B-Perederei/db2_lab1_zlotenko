@@ -197,8 +197,10 @@ if __name__ == '__main__':
 		for year in YEARS:
 			retry(try_insert_data, 'Failed inserting data', MAX_TRY_COUNT, conn, year)
 		duration = time.time()-start
+		minutes = duration // 60
+		seconds = round(duration % 60)
 		with open('Duration.txt', 'w') as file:
-			file.write(f'Duration of inserting data from all the years is {duration}')
+			file.write(f'Duration of inserting data from all the years is {minutes} minutes and {seconds} seconds')
 
 		retry(try_select, 'Failed selecting data', MAX_TRY_COUNT, conn)			
 
