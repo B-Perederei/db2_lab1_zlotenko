@@ -141,7 +141,7 @@ def try_select(conn):
 	with conn:
 		with conn.cursor() as cur:
 
-			execute_line = '''SELECT regname AS region, "year", AVG(mathball100) AS ball
+			execute_line = '''SELECT regname AS region, "year", ROUND(AVG(mathball100), 3) AS ball
 							  FROM zno_results
 							  WHERE mathteststatus IN ('Зараховано', 'Отримав результат') AND "year" IN (2019, 2020)
 							  GROUP BY region, "year"
