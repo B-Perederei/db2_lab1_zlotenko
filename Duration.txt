@@ -1,0 +1,1 @@
+Duration of inserting data from all the years is 12.0 minutes and 37 seconds
