@@ -8,6 +8,7 @@ services:
       - .:/zno_results
     depends_on:
       - db
+      - flyway
 
   db:
     hostname: postgres-db
@@ -27,3 +28,11 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
       PGADMIN_DEFAULT_PASSWORD: "root"
+      
+  flyway:
+    image: flyway/flyway
+    command: -url=jdbc:postgresql://db:5432/zno_db -user=postgres -password=postgres migrate
+    volumes:
+      - "./flyway/sql:/flyway/sql"
+    depends_on:
+      - db
